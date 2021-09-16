@@ -1,0 +1,54 @@
+.customer__table{
+  width: auto;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.editCustomer__form{
+  width: auto;
+}
+
+@media only screen and (min-width:750px) and (max-width:1138px){
+  .customer__table{
+      flex-direction: column;
+      width: auto;
+      
+  }
+  .editCustomer__form{
+      margin-top: 40px;
+      justify-content: center;
+      width: 100%;
+      margin-left: 210px;
+  }
+  
+}
+
+@media only screen and (min-width:400px) and (max-width:750px){
+  .customer__table{
+      flex-direction: column;
+      width: 100%;
+  }
+  .editCustomer__form{
+      margin: 100%;
+      margin-top: 20px;
+      justify-content: center;
+  }
+  
+}
+
+@media only screen and (max-width:400px) {
+  .customer__table{
+      flex-direction: column;
+      width: 100%;
+  }
+  .editCustomer__form{
+      margin: 100%;
+      margin-top: 20px;
+      justify-content: right;
+  }
+  
+}
+.span{
+  color:red
+}

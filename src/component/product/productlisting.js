@@ -1,8 +1,8 @@
-import React,{useState,useEffect} from "react"
-import { useDispatch } from "react-redux";
-import { sort, sortReverse} from "./sorting"
-import CustomerForm  from './customerform'
-import { startdeletecustomer } from '../../action/componentsaction'
+import React,{useState,useEffect} from 'react'
+import { useDispatch } from 'react-redux';
+import Productform from './productform'
+import { sort,sortReverse } from './sorting'
+import {asyncdelete} from '../../action/productsaction'
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Table,TableBody,TableCell,TableContainer,TableFooter,TablePagination,TableRow,Paper,IconButton,Button,TableHead } from '@material-ui/core';
@@ -21,7 +21,6 @@ const useStyles1 = makeStyles((theme) => ({
       marginLeft: theme.spacing(2.5),
     },
   }));
-  
   function TablePaginationActions(props) {
     const classes = useStyles1();
     const theme = useTheme();
@@ -30,19 +29,17 @@ const useStyles1 = makeStyles((theme) => ({
     const handleFirstPageButtonClick = (event) => {
       onPageChange(event, 0);
     };
-  
     const handleBackButtonClick = (event) => {
-      onPageChange(event, page - 1);
-    };
-  
-    const handleNextButtonClick = (event) => {
-      onPageChange(event, page + 1);
-    };
-  
-    const handleLastPageButtonClick = (event) => {
-      onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-    };
-    return (
+        onPageChange(event, page - 1);
+      };
+    
+      const handleNextButtonClick = (event) => {
+        onPageChange(event, page + 1);
+      };
+      const handleLastPageButtonClick = (event) => {
+        onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+      };
+      return (
         <div className={classes.root}>
           <IconButton
             onClick={handleFirstPageButtonClick}
@@ -82,10 +79,9 @@ const useStyles1 = makeStyles((theme) => ({
           width: "auto",
         },
       });
-                    
-
+                      
       export default function CustomPaginationActionsTable(props){
-    const {data,deleting} = props
+    const {data,deletingdata} = props
     const classes = useStyles2();
 
     const [ page, setPage ] = useState(0);
@@ -93,88 +89,88 @@ const useStyles1 = makeStyles((theme) => ({
     const [ editData, setEditData ] = useState({})
     const [ toggle, setToggle ] = useState(false)
     const [searchingitem,setSearchingItem] = useState('')
-    const [filterddata,setFilterData] = useState([])
-    const [sorting,setSort] = useState([])
-    const [index,setIndex] = useState('')
-    const [filter,setFilter] = useState([])
+    const [filterddata,setFilterdData] = useState([])
+    const [sorting,setSort] = useState('')
+    const [modalToggle,setModalToggle] = useState(false)
     useEffect(()=>{
-        setFilterData(data)
+        setFilterdData(data)
     },[data])
-    const dispatch = useDispatch()
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, filterddata.length - page * rowsPerPage);
-    const handleChange=(e)=>{
-        setSearchingItem(e.target.value)
-        
-    }
- 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-      };
-    
-      const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-      };
-      const handleToggleTrue = () => {
-        setToggle(true)
-      }
-    
-      const handleToggleFalse = () => {
-        setToggle(false)
-      }
-    
+     const emptyRows = rowsPerPage - Math.min(rowsPerPage, filterddata.length - page * rowsPerPage);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const dispatch = useDispatch()
+
+  const handleToggleTrue = () => {
+    setToggle(true)
+  }
+
+  const handleToggleFalse = () => {
+    setToggle(false)
+  }
+
   const handleDelete = (_id) => {
-    dispatch(startdeletecustomer(_id))
+    dispatch(asyncdelete(_id))
   }
 
   const handleDetails = (data) => {
     setEditData(data)
+    setModalToggle(!modalToggle)
     handleToggleTrue()
+  
   }
-
-
-    const handlesearch=(data,arr)=>{
-        const find=data.filter((ele)=>{
-            return ele.name.toLowerCase().includes(searchingitem.toLocaleLowerCase())
-        })
-        if(arr.length==0){
-           return  setFilterData(data)
-        }else{
-           return setFilterData(find)
-        }
+    const handleChange=(e)=>{
+        setSearchingItem(e.target.value)
     }
-    useEffect(()=>{
-       handlesearch(data,searchingitem)
-    },[searchingitem])
     const handleSelectChange=(e)=>{
         const result = e.target.value
+        
         setSort(result)
         if(result ==='atoz'){
             const resultData = sort(data)
-            setFilterData(resultData) 
+            setFilterdData(resultData) 
         } else if(result === 'ztoa'){
             const resultData= sortReverse(data)
-            setFilterData(resultData)
+            setFilterdData(resultData)
         }
     }
- 
+     const handleSearching=(data,arr)=>{
+        const find = data.filter((ele)=>{
+            return ele.name.includes(arr)
+        })
+        if(arr.length==0){
+            return setFilterdData(data)
+        }else{
+            return setFilterdData(find)
+        }
+     }
+     useEffect(()=>{
+        handleSearching(data,searchingitem)
+     },[searchingitem])
     return(
-        <div>
-            <input type='text' placeholder='search here by name' value={searchingitem} onChange={handleChange}/>
-            <label>Sort By</label>
-                        <select value={ sorting } onChange={ handleSelectChange } style = {{ width:'200px'}}>
+       <div>
+           <input type='text' value={searchingitem} placeholder='search by product name' onChange={handleChange}/>
+           <label>Sort By</label>
+           <select value={ sorting } onChange={ handleSelectChange } style = {{ width:'200px'}}>
+                            <option value=''>sorting</option>
                             <option value="atoz">A to Z</option>
                             <option value="ztoa">Z to A</option>
                         </select>
-                        <div className='mt-4'>
                         <div className="customer__table">
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="custom pagination table">
       <TableHead>
           <TableRow>
             <TableCell align="left">Name</TableCell>
-            <TableCell align="right">Email&nbsp;</TableCell>
-            <TableCell align="right">Mobile&nbsp;</TableCell>
+            <TableCell align="right">price&nbsp;</TableCell>
+           
             <TableCell align="center">Action&nbsp;</TableCell>
           </TableRow>
         </TableHead>
@@ -188,10 +184,7 @@ const useStyles1 = makeStyles((theme) => ({
                 {row.name}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                {row.email}
-              </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.mobile}
+                {row.price}
               </TableCell>
               <TableCell style={{ width: 230 }} align="center">
                 <Button onClick={ () => handleDetails(row) }><EditIcon/></Button>
@@ -226,22 +219,21 @@ const useStyles1 = makeStyles((theme) => ({
         </TableFooter>
       </Table>
     </TableContainer>
-    <div>
-     <Modal show={toggle}>
-       <ModalHeader>edit form</ModalHeader>
-       <ModalBody>
-       {
-        Object.keys(editData).length > 0 && toggle ?<CustomerForm 
+    <div >
+              <Modal show={toggle}>
+                <ModalHeader>
+                  edit form
+                </ModalHeader>
+                <ModalBody>
+                {
+        Object.keys(editData).length > 0 && toggle ?<Productform
           editData={ editData }  
           handleToggleFalse={ handleToggleFalse }/> : null
       }
-       </ModalBody>
-     </Modal>
+                </ModalBody>
+              </Modal>
     </div>
     </div>
        </div>
-             
-                
-        </div>
     )
 }

@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
-
+import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
-
+import './cus.css'
 const Registerform =(props)=>{
     const {registerdata} = props
     const [name,setName] = useState('')
@@ -15,21 +15,21 @@ const Registerform =(props)=>{
     const runValidation=()=>{
         
         if(name.trim().length==0){
-             error.name='pls enter the name'
+             error.name='enter the name'
         }
         if(email.trim().length==0){
-            error.email='pls enter the email'
+            error.email='enter the email'
         }
         if(password.trim().length==0){
-             error.password='pls enter the password'
+             error.password='enter the password'
         }else if(password.length<8){
-            error.password='pls enter password 8 letter atleast'
+            error.password='enter password 8 letter atleast'
         }
         if(bussinessName.trim().length==0){
-            error.bussiness='pls enter the bussiness'
+            error.bussiness='enter the bussiness'
        }
        if(address.trim().length==0){
-        error.address='pls enter the address'
+        error.address='enter the address'
    }
 
     }
@@ -83,23 +83,43 @@ const Registerform =(props)=>{
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
-                <input type='text' value={name} onChange={handleChange} name='name'placeholder='name'/>
-                {validation.name&&<span>{validation.name}</span>}
+             <div className="row">
+        <div className="col-md-6 offset-sm-3 text-left">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label >name</label>
+              <input type='text' className="form-control"  value={name} onChange={handleChange} name='name'placeholder='name'/>
+                {validation.name&&<span className='span'>{validation.name}</span>}
                 <br/>
-
-                <input type='email' value={email} onChange={handleChange} name='email' placeholder='email'/>
-                {validation.email&&<span>{validation.email}</span>}
-                <br/>
-                <input type='password' value={password} onChange={handleChange} name='password' placeholder='password' />
-                {validation.password&&<span>{validation.password}</span>}<br/>
-                <input type='text' value={bussinessName} onChange={handleChange} name='bussinessname' placeholder='bussinessname'/>
-                {validation.bussiness&&<span>{validation.bussiness}</span>}<br/>
-                <input type='text' value={address} onChange={handleChange} name='address' placeholder='address' />
-                {validation.address&&<span>{validation.address}</span>}<br/>
-                <input type='submit' value='add'/>
-            </form>
-        </div>
+            </div>
+            <div className="form-group">
+              <label >email</label>
+              <input type='email' className="form-control"  value={email} onChange={handleChange} name='email' placeholder='email'/>
+                {validation.email&&<span className='span'>{validation.email}</span>}<br/>
+            </div>
+            <div className="form-group">
+              <label >Password</label>
+              <input type='password' className="form-control"  value={password} onChange={handleChange} name='password' placeholder='password' />
+                {validation.password&&<span className='span'>{validation.password}</span>}<br/>
+            </div>
+            <div className="form-group">
+              <label >business</label>
+              <input type='text' className="form-control"  value={bussinessName} onChange={handleChange} name='bussinessname' placeholder='bussinessname'/>
+                {validation.bussiness&&<span className='span'>{validation.bussiness}</span>}<br/>
+            </div>
+            <div className="form-group">
+              <label >address</label>
+              <input type='text' className="form-control"  value={address} onChange={handleChange} name='address' placeholder='address' />
+                {validation.address&&<span className='span'>{validation.address}</span>}<br/>
+            </div>
+            
+            <input type='submit' value='submit' className="btn btn-success btn-block"/><br/>
+            already login? <Link to='/login'>login</Link>
+          </form>
+            </div>
+            </div>
+              
+          </div>
     )
 }
 export default withRouter(Registerform)

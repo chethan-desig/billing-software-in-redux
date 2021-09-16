@@ -5,7 +5,7 @@ const Componentreducer=(state=intialstate,action)=>{
             return[...action.payload]
         }
         case "ADD_DATA":{
-            return [...state,action.payload]
+            return [action.payload,...state]
         }
         case 'SET_UPDATE':{
             

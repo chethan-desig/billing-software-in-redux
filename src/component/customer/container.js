@@ -4,6 +4,7 @@ import { startcustomer } from '../../action/componentsaction'
 import Customerlist from './customerslist'
 import { startingaddingcustomer } from '../../action/componentsaction'
 
+
 import Customerform from './customerform'
 
 const Container =()=>{
@@ -26,10 +27,18 @@ const Container =()=>{
     }
     
     return(
-        <div>
+        <div >
+          <div className='row'>
+              <div className='col-8 mt-4 ' >
+
             <Customerlist data={data} />
-        <Customerform addingcustomer={addingcustomer} />
-        
+            </div>
+                <div className='col-4 mt-4'>
+                <h1><span class="badge bg-secondary">ADD customer</span></h1>
+            <Customerform addingcustomer={addingcustomer} />
+           
+            </div>
+            </div>
         </div>
     )
 }
