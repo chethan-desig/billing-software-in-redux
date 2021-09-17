@@ -32,16 +32,16 @@ const Routing=(props)=>{
                
                  
           <div>
-                <PrivateRoute  path='/dashboard' component={Dashboard} />
-               <PrivateRoute path='/customers' component={Customers} /> <PrivateRoute  path='/products' component={Product} />
-                 <PrivateRoute  path='/billings' component={Billing} />
-                <PrivateRoute path="/userdetails" component={userdetails}/>
+                <PrivateRoute  path='/dashboard' component={Dashboard} exact={true} />
+               <PrivateRoute path='/customers' component={Customers} exact /> <PrivateRoute  path='/products' component={Product} exact/>
+                 <PrivateRoute  path='/billings' component={Billing} exact/>
+                <PrivateRoute path="/userdetails" component={userdetails} exact/>
                 </div>
-          <div><PrivateRoute  path='/register' component={Registerauth}/>
-          <Route  path='/login' component={Loginauth}/> 
+          <div><Route  path='/register' component={Registerauth} exact/>
+          <Route  path='/login' component={Loginauth} exact/> 
           </div>
       
-            <PrivateRoute exact path='/' component={Home} />
+            <Route exact path='/' component={Home} exact />
       </div>
         </div>
     )
