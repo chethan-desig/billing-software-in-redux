@@ -9,7 +9,7 @@ const Dashboard=()=>{
     const [product,setProduct] = useState([])
     const [bill,setBill] = useState([])
     useEffect(()=>{
-        axios.get('http://dct-billing-app.herokuapp.com/api/customers',{
+        axios.get('https://dct-billing-app.herokuapp.com/api/customers',{
             headers:{
                 "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
             }
@@ -23,7 +23,7 @@ const Dashboard=()=>{
         })
     },[])
     useEffect(()=>{
-        axios.get('http://dct-billing-app.herokuapp.com/api/products',{
+        axios.get('https://dct-billing-app.herokuapp.com/api/products',{
             headers:{
                 "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
             }
@@ -37,7 +37,7 @@ const Dashboard=()=>{
         })
     },[])
     useEffect(()=>{
-        axios.get('http://dct-billing-app.herokuapp.com/api/bills',{
+        axios.get('https://dct-billing-app.herokuapp.com/api/bills',{
             headers:{
                 "Authorization" : `Bearer ${localStorage.getItem('jwt')}`
             }

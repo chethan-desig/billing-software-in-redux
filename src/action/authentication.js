@@ -3,7 +3,7 @@ import axios from 'axios'
 export const startregister =(formdata,reset)=>{
   
     return (dispatch)=>{
-        axios.post('http://dct-billing-app.herokuapp.com/api/users/register',formdata)
+        axios.post('https://dct-billing-app.herokuapp.com/api/users/register',formdata)
         .then((res)=>{
             const reg = res.data
             console.log(reg)
@@ -29,7 +29,7 @@ export const registerauth=(reg)=>{
 }
 export const startloginauth=(formdata,reset)=>{
     return (dispatch)=>{
-        axios.post('http://dct-billing-app.herokuapp.com/api/users/login',formdata)
+        axios.post('https://dct-billing-app.herokuapp.com/api/users/login',formdata)
         .then((res)=>{
             const result = res.data
             if(result.hasOwnProperty('errors')){
@@ -57,7 +57,7 @@ export const loginauth=(result)=>{
 
 export const startdetails=()=>{
     return (dispatch)=>{
-        axios.get(' http://dct-billing-app.herokuapp.com/api/users/account',{
+        axios.get(' https://dct-billing-app.herokuapp.com/api/users/account',{
              headers: {"Authorization" : `Bearer ${localStorage.getItem('jwt')}`} 
         })
         .then((res)=>{

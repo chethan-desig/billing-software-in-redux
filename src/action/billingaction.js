@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const asyncallbills =()=>{
     return (dispatch)=>{
-        axios.get('http://dct-billing-app.herokuapp.com/api/bills',{
+        axios.get('https://dct-billing-app.herokuapp.com/api/bills',{
             headers:{
             'Authorization':`Bearer ${localStorage.getItem('jwt')}`
             }
@@ -24,7 +24,7 @@ export const allbills=(result)=>{
 }
 export const asyncsendbills=(formdata,reset,showmodal)=>{
     return (dispatch)=>{
-        axios.post('http://dct-billing-app.herokuapp.com/api/bills',formdata,{
+        axios.post('https://dct-billing-app.herokuapp.com/api/bills',formdata,{
             headers:{
                 'Authorization':`Bearer ${localStorage.getItem('jwt')}`
             }
@@ -52,7 +52,7 @@ export const sendbills=(result)=>{
 }
 export const asyncbilldelete=(id)=>{
     return (dispatch)=>{
-        axios.delete(`http://dct-billing-app.herokuapp.com/api/bills/${id}`,{
+        axios.delete(`https://dct-billing-app.herokuapp.com/api/bills/${id}`,{
             headers:{
                 'Authorization':`Bearer ${localStorage.getItem('jwt')}`
             }
@@ -74,7 +74,7 @@ export const billdelete=(result)=>{
 }
 export const asyncBill=(id)=>{
     return (dispatch)=>{
-        axios.get(`http://dct-billing-app.herokuapp.com/api/bills/${id}`,{
+        axios.get(`https://dct-billing-app.herokuapp.com/api/bills/${id}`,{
             headers:{
                 'Authorization':`Bearer ${localStorage.getItem('jwt')}`
             }
