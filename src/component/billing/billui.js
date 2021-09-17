@@ -145,7 +145,7 @@ const useStyles1 = makeStyles((theme) => ({
         setSearchItem(result)
     }
     const handleshow=(id)=>{
-      axios.get(`http://dct-billing-app.herokuapp.com/api/bills/${id}`,{
+      axios.get(`https://dct-billing-app.herokuapp.com/api/bills/${id}`,{
             headers:{
                 'Authorization':`Bearer ${localStorage.getItem('jwt')}`
             }
