@@ -81,7 +81,7 @@ const useStyles1 = makeStyles((theme) => ({
       });
                       
       export default function CustomPaginationActionsTable(props){
-    const {data,deletingdata} = props
+    const {data} = props
     const classes = useStyles2();
 
     const [ page, setPage ] = useState(0);
@@ -145,7 +145,7 @@ const useStyles1 = makeStyles((theme) => ({
         const find = data.filter((ele)=>{
             return ele.name.includes(arr)
         })
-        if(arr.length==0){
+        if(arr.length===0){
             return setFilterdData(data)
         }else{
             return setFilterdData(find)
@@ -157,7 +157,7 @@ const useStyles1 = makeStyles((theme) => ({
     return(
        <div>
            <input type='text' value={searchingitem} placeholder='search by product name' onChange={handleChange}/>
-           <label>Sort By</label>
+           sort by
            <select value={ sorting } onChange={ handleSelectChange } style = {{ width:'200px'}}>
                             <option value=''>sorting</option>
                             <option value="atoz">A to Z</option>

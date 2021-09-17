@@ -53,7 +53,7 @@ const Dashboard=()=>{
     const totalRevenue = bill.reduce((rev, bill) => {
         return rev + bill.total
     }, 0)
-    const month = moment().month()
+  
     const sales = {}
 
     for (let i = 0; i < 12; i++) {

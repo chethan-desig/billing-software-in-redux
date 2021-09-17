@@ -9,7 +9,7 @@ const Home=()=>{
     return (
         <div>
            <Navbar />
-         <img src={billing} class="rounded mx-auto d-block" alt="..."></img>
+         <img src={billing} alt='thid is a web design ' class="rounded mx-auto d-block" />
 
          <div class='container'>
 <div className='row' id = 'scrollspyHeading1'>
@@ -20,13 +20,13 @@ const Home=()=>{
    <p>Here we can register with there details which still u didn't have the account in this software and u can register by there name address emailId phone number and then which type of the bussiness you have to use this software to billing and then which u already have an account in this software u only need to login by there emailid and password which u created while registering process  </p>
 </div>
 <div class='col-md-6'>
- <img src={register} alt='thid is a web design image' height='300px' width='100%'/>
+ <img src={register}alt='thid is a web design ' height='300px' width='100%'/>
  </div>
  
  </div>
  <div className='row' id = 'scrollspyHeading2'>
  <div class='col-md-6'>
- <img src={login} alt='thid is a web application image' height='300px' width='100%'/>
+ <img src={login} alt='thid is a web design ' height='300px' width='100%'/>
  </div>
     <div class="col-md-6" >
 
@@ -45,13 +45,13 @@ const Home=()=>{
   
 </div>
 <div class='col-md-6'>
- <img src={customer} alt='thid is a web design image' height='300px' width='100%'/>
+ <img src={customer} alt='thid is a web design ' height='300px' width='100%'/>
  </div>
  
  </div>
  <div className='row' id = 'scrollspyHeading1'>
  <div class='col-md-6'>
- <img src={product} alt='thid is a web design image' height='300px' width='100%'/>
+ <img src={product} alt='thid is a web design ' height='300px' width='100%'/>
  </div>
  
     <div class="col-md-6" >
@@ -69,7 +69,7 @@ const Home=()=>{
  
 </div>
 <div class='col-md-6'>
-<img src={bill} alt='thid is a web design image' height='300px' width='100%'/>
+<img src={bill} alt='thid is a web design ' height='300px' width='100%'/>
 </div>
 
 </div>

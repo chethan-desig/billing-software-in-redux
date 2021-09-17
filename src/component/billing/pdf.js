@@ -14,7 +14,7 @@ const Pdf=(props)=>{
     })
     const filter=()=>{
         const fil = customerdata.filter((ele)=>{
-           return  ele._id==detalis.customer
+           return  ele._id===detalis.customer
         })
         setCustomername(fil)
         return fil

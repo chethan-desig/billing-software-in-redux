@@ -93,12 +93,12 @@ const useStyles1 = makeStyles((theme) => ({
       
 
       export default function Billui(props){
-    const {data,removebill} = props
+    const {data} = props
     const classes = useStyles2();
 
     const [ page, setPage ] = useState(0);
     const [ rowsPerPage, setRowsPerPage ] = useState(5);
-    const [ toggle, setToggle ] = useState(false)
+   
     const [searchitem,setSearchItem] = useState('')
     const [filterddata,setFilterData] = useState([])
     const [detalis,setDetails] = useState([])
@@ -126,13 +126,9 @@ const useStyles1 = makeStyles((theme) => ({
 
   const dispatch = useDispatch()
 
-  const handleToggleTrue = () => {
-    setToggle(true)
-  }
+  
 
-  const handleToggleFalse = () => {
-    setToggle(false)
-  }
+  
   const handleDelete = (_id) => {
     dispatch(asyncbilldelete(_id))
   }

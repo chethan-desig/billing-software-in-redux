@@ -85,7 +85,7 @@ const useStyles1 = makeStyles((theme) => ({
                     
 
       export default function CustomPaginationActionsTable(props){
-    const {data,deleting} = props
+    const {data} = props
     const classes = useStyles2();
 
     const [ page, setPage ] = useState(0);
@@ -95,8 +95,6 @@ const useStyles1 = makeStyles((theme) => ({
     const [searchingitem,setSearchingItem] = useState('')
     const [filterddata,setFilterData] = useState([])
     const [sorting,setSort] = useState([])
-    const [index,setIndex] = useState('')
-    const [filter,setFilter] = useState([])
     useEffect(()=>{
         setFilterData(data)
     },[data])
@@ -137,7 +135,7 @@ const useStyles1 = makeStyles((theme) => ({
         const find=data.filter((ele)=>{
             return ele.name.toLowerCase().includes(searchingitem.toLocaleLowerCase())
         })
-        if(arr.length==0){
+        if(arr.length===0){
            return  setFilterData(data)
         }else{
            return setFilterData(find)

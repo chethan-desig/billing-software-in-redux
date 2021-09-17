@@ -10,7 +10,7 @@ const Componentreducer=(state=intialstate,action)=>{
         case 'SET_UPDATE':{
             
             return state.map((ele)=>{
-                if(ele._id==action.payload._id){
+                if(ele._id===action.payload._id){
                     return {...state,...action.payload}
                 }else{
                     return {...ele}

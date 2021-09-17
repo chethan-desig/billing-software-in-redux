@@ -15,40 +15,40 @@ const Registerform =(props)=>{
     const error={}
     const runValidation=()=>{
         
-        if(name.trim().length==0){
+        if(name.trim().length===0){
              error.name='enter the name'
         }
-        if(email.trim().length==0){
+        if(email.trim().length===0){
             error.email='enter the email'
         }
-        if(password.trim().length==0){
+        if(password.trim().length===0){
              error.password='enter the password'
         }else if(password.length<8){
             error.password='enter password 8 letter atleast'
         }
-        if(bussinessName.trim().length==0){
+        if(bussinessName.trim().length===0){
             error.bussiness='enter the bussiness'
        }
-       if(address.trim().length==0){
+       if(address.trim().length===0){
         error.address='enter the address'
    }
 
     }
     
     const handleChange=(e)=>{
-        if(e.target.name=='name'){
+        if(e.target.name==='name'){
             setName(e.target.value)
         }
-        if(e.target.name=='email'){
+        if(e.target.name==='email'){
              setEmail(e.target.value)
         }
-        if(e.target.name=='password'){
+        if(e.target.name==='password'){
             setPassword(e.target.value)
         }
-        if(e.target.name=='bussinessname'){
+        if(e.target.name==='bussinessname'){
             setBussinessName(e.target.value)
         }
-        if(e.target.name=='address'){
+        if(e.target.name==='address'){
             setAddress(e.target.value)
         }
     }

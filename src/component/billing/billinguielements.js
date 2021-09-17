@@ -1,17 +1,12 @@
 import React,{useState,useEffect} from "react"
 import { useSelector} from 'react-redux'
-import axios from 'axios'
-import Billdetails from './billfulldetail'
+
 
 const Billuielements=(props)=>{
-    const {_id,customer,lineItems,removebill,product} = props
+    const {_id,customer} = props
     
     const [name,setName]=useState([])
-    const [togle,setToggle]=useState(false)
-    const [detailtoggle,setDetailtoggle]=useState(false)
-
-    const [productname,setProductname] = useState([])
-    const [detailbill,setBill] = useState({})
+   
     const state = useSelector((state)=>{
         return state.components
     }) 
@@ -63,9 +58,7 @@ const Billuielements=(props)=>{
             
              
      },[_id])
-    const handleRemove=(id)=>{
-        removebill(id)
-    }
+  
     // const Showmore=(id)=>{
 
     //     axios.get(`http://dct-billing-app.herokuapp.com/api/bills/${id}`,{

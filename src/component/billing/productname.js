@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react"
-import { useSelector,useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 const Productname=(props)=>{
     const {id,product} = props
     const [productname,setProductname] = useState([])   

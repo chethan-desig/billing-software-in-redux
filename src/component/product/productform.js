@@ -13,10 +13,10 @@ const Productform =({id,handletoggle,productdata,editData,handleToggleFalse})=>{
     const runValidation=()=>{
         
        
-        if(name.trim().length==0){
+        if(name.trim().length===0){
             error.name='enter the name'
         }
-        if(price.length==0){
+        if(price.length===0){
              error.price='enter the price'
         }
        
@@ -27,10 +27,10 @@ const Productform =({id,handletoggle,productdata,editData,handleToggleFalse})=>{
     
     const handleChange=(e)=>{
        
-        if(e.target.name=='name'){
+        if(e.target.name==='name'){
              setName(e.target.value)
         }
-        if(e.target.name=='price'){
+        if(e.target.name==='price'){
             setPrice(e.target.value)
         }
        

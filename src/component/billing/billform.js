@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { withRouter } from 'react-router'
 import { useSelector } from 'react-redux'
-import {Modal, ThemeProvider} from 'react-bootstrap'
+import {Modal} from 'react-bootstrap'
 import Pdf from 'react-to-pdf'
 import moment from 'moment'
 import Billing from './billinginvoice'
@@ -33,13 +33,13 @@ const Loginform =(props)=>{
     const runValidation=()=>{
         
        
-        if(date.length==0){
+        if(date.length===0){
             error.date='enter the date'
         }
-        if(customer.length==0){
+        if(customer.length===0){
             error.customer='enter customer'
         }
-        if(product.length==0){
+        if(product.length===0){
             error.product='enter the product'
         }
        
@@ -49,7 +49,7 @@ const Loginform =(props)=>{
     //show modal data
     const filercustomer=()=>{
         const filter=customerdata.filter((ele)=>{
-            return ele._id==modaldata.customer
+            return ele._id===modaldata.customer
         })
         setCustomername(filter)
         return filter
@@ -60,7 +60,7 @@ const Loginform =(props)=>{
 
     const handleminus=(id)=>{
         const pro = product.map((ele)=>{
-            if(ele.product==id){ 
+            if(ele.product===id){ 
                 setMinus(minus-1)
                 return {...ele,...{quantity:ele.quantity-1}}
             }else{
@@ -74,7 +74,7 @@ const Loginform =(props)=>{
     
     const handlepius=(id)=>{
         const pro = product.map((ele)=>{
-            if(ele.product==id){
+            if(ele.product===id){
                 setMinus(minus+1)
                 return {...ele,...{quantity:ele.quantity+1}}
             }else{
@@ -88,13 +88,13 @@ const Loginform =(props)=>{
   
     const handleChange=(e)=>{
        
-        if(e.target.name=='date'){
+        if(e.target.name==='date'){
              setDate(e.target.value)
         }
-        if(e.target.name=='customer'){
+        if(e.target.name==='customer'){
             setCustomer(e.target.value)
         }  
-        if(e.target.name=='product'){
+        if(e.target.name==='product'){
             setProductselected(e.target.value)
         }
 
@@ -302,7 +302,7 @@ const Loginform =(props)=>{
                     }
 
                     {
-                        product.length==0?'add product ': <table >
+                        product.length===0?'add product ': <table >
                         <thead>
                             <td><tr>minus</tr></td>
                             <td><tr>name</tr></td> 
@@ -377,63 +377,3 @@ const Loginform =(props)=>{
 }
 export default withRouter(Loginform)
 
-{/* <table >
-<thead>
-    <td><tr>minus</tr></td>
-    <td><tr>name</tr></td> 
-    <td><tr>quantity</tr></td> 
-    <td><tr>plus</tr></td> 
-    <td><tr>delete</tr></td> 
-</thead>
-
-    {
-         
-        <td className='td'>     {
-                 productname.map((ele)=>{return <tr className='tr'><button 
-                  className='button' onClick={()=>{handleminus(ele._id)}}>-</button></tr>})
-             }
-            
-            </td>
-    }
-   
-     {
-         
-         <td className='td'>     {
-                  productname.map((ele)=>{return <tr className='tr'>
-                      <button className='button'>{ele.name}</button>
-                  </tr>})
-              }
-             
-             </td>
-     }
-  
-    {
-        <td className='td'>
-            {
-         product.map((ele)=>{
-                     return <tr className='tr'><button className='button'>{ele.quantity}</button></tr>
-                 })
-            }
-        </td>
-    }
-
-    {
-        <td className='td'>
-            {
-            productname.map((ele)=>{return <tr className='tr'><button
-            className='button' onClick={()=>{handlepius(ele._id)}}>+</button></tr>})
-            }
-            </td>
-    }
-    
-    {
-         
-         <td className='td'>     {
-                  productname.map((ele)=>{return <tr className='tr'><button 
-                   className='button' onClick={()=>{handleRemove(ele._id)}} >remove</button></tr>})
-              }
-             
-             </td>
-     }
-
-</table> */}

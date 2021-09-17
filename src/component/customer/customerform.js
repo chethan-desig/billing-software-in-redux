@@ -14,13 +14,13 @@ const Loginform =({handletoggle,addingcustomer,id,editData,handleToggleFalse})=>
     const runValidation=()=>{
         
        
-        if(name.trim().length==0){
+        if(name.trim().length===0){
             error.name='enter the name'
         }
-        if(mobile.trim().length==0){
+        if(mobile.trim().length===0){
              error.mobile='enter the mobilenumber'
         }
-        if(email.trim().length==0){
+        if(email.trim().length===0){
             error.email='enter the email'
        }
 
@@ -30,13 +30,13 @@ const Loginform =({handletoggle,addingcustomer,id,editData,handleToggleFalse})=>
     const dispatch=useDispatch()
     const handleChange=(e)=>{
        
-        if(e.target.name=='name'){
+        if(e.target.name==='name'){
              setName(e.target.value)
         }
-        if(e.target.name=='mobile'){
+        if(e.target.name==='mobile'){
             setMobile(e.target.value)
         }
-        if(e.target.name=='email'){
+        if(e.target.name==='email'){
             setEmail(e.target.value)
         }
         

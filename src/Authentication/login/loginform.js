@@ -13,10 +13,10 @@ const Loginform =(props)=>{
     const runValidation=()=>{
         
        
-        if(email.trim().length==0){
+        if(email.trim().length===0){
             error.email='enter the email'
         }
-        if(password.trim().length==0){
+        if(password.trim().length===0){
              error.password='enter the password'
         }else if(password.length<8){
             error.password='password 8 letter atleast'
@@ -26,10 +26,10 @@ const Loginform =(props)=>{
     
     const handleChange=(e)=>{
        
-        if(e.target.name=='email'){
+        if(e.target.name==='email'){
              setEmail(e.target.value)
         }
-        if(e.target.name=='password'){
+        if(e.target.name==='password'){
             setPassword(e.target.value)
         }
         
@@ -38,7 +38,7 @@ const Loginform =(props)=>{
         
         e.preventDefault()
         runValidation()
-        if(Object.keys(error)==0){
+        if(Object.keys(error)===0){
             setValidation({})
             const formdata={
                 email:email,

@@ -5,7 +5,7 @@ const Navbarauth=(props)=>{
       
    
     const cureentpath=(history,path)=>{
-        if(history.location.pathname==path){
+        if(history.location.pathname===path){
             return {color:'#50DBB4'}
         }else {
             return {color:'#EDC126'}
@@ -14,7 +14,7 @@ const Navbarauth=(props)=>{
     return(
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div className='container-fluid'>
-            <a class="navbar-brand" href="#">Billing software</a>
+            <h3 class="navbar-brand">Billing software</h3>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>

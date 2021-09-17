@@ -5,7 +5,7 @@ const Navbarcomponent=(props)=>{
       
    
     const cureentpath=(history,path)=>{
-        if(history.location.pathname==path){
+        if(history.location.pathname===path){
             return {color:'#50DBB4'}
         }else {
             return {color:'#EDC126'}
