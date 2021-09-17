@@ -38,7 +38,7 @@ const Loginform =(props)=>{
         
         e.preventDefault()
         runValidation()
-        if(Object.keys(error)===0){
+        if(Object.keys(error)==0){
             setValidation({})
             const formdata={
                 email:email,
