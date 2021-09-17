@@ -1,6 +1,9 @@
 import React,{useState,useEffect} from "react"
 import axios from "axios"
 import {PieChart ,Pie,Tooltip,XAxis,YAxis,Legend,BarChart,Bar,CartesianGrid } from 'recharts'
+import Chart from 'react-google-charts'
+import moment from 'moment'
+import Navbar from './navbar/navbarcomponent'
 const Dashboard=()=>{
     const [customer,setCustomer] = useState([])
     const [product,setProduct] = useState([])
@@ -47,6 +50,25 @@ const Dashboard=()=>{
             alert(err.message)
         })
     },[])
+    const totalRevenue = bill.reduce((rev, bill) => {
+        return rev + bill.total
+    }, 0)
+    const month = moment().month()
+    const sales = {}
+
+    for (let i = 0; i < 12; i++) {
+        let monthSale = 0
+        bill.forEach(ele => {
+            if (moment(ele.date).month() === i) {
+                monthSale += ele.total
+            }
+        })
+        sales[moment(i + 1, "M").format('MMM')] = monthSale
+    }
+
+    const monthlySales = Object.entries(sales)
+    monthlySales.unshift(["month", "sales"])
+   
     const data=[
         {name:"customers",value:customer.length},
         {name:"products",value:product.length},
@@ -54,23 +76,32 @@ const Dashboard=()=>{
     ]
     
     return(
+       <div>
+
+        <Navbar />
         <div className='container mt-4'>
                     <div class="card">
             <div class="card-body">
-               <h2>Total customers</h2>
+               <h2>Total connected customers</h2>
                 <h4>{customer.length}</h4>
             </div>
         </div>
         <div class="card mt-4">
             <div class="card-body">
-               <h2>Total Products</h2>
+               <h2>Total Products Available</h2>
                 <h4>{product.length}</h4>
             </div>
         </div>
         <div class="card mt-4">
             <div class="card-body">
-               <h2>total Bill generated</h2>
+               <h2>total Bill generated </h2>
                 <h4>{bill.length}</h4>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+               <h2>Total revenue generated</h2>
+                <h4>{totalRevenue}</h4>
             </div>
         </div>
         <div className='row mt-5'>
@@ -93,6 +124,22 @@ const Dashboard=()=>{
             </PieChart>
             </div>
             </div>
+        </div>
+        <div className='container'>
+        <Chart
+            width={700}
+            height={'300px'}
+            chartType="AreaChart"
+            loader={<div>Loading Chart</div>}
+            data={monthlySales}
+            options={{
+                title: '1 year Company sales',
+                hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
+                vAxis: { title: 'Sales', minValue: 0 },
+                chartArea: { width: '70%', height: '70%' },
+            }}
+        />
+        </div>
         </div>
     )
 }

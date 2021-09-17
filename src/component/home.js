@@ -4,9 +4,11 @@ import customer from './photos/customer.png'
 import product from './photos/product.png'
 import bill from './photos/bill.png'
 import billing from './photos/billing.jpg'
+import Navbar from './navbar/navbarauth'
 const Home=()=>{
     return (
         <div>
+           <Navbar />
          <img src={billing} class="rounded mx-auto d-block" alt="..."></img>
 
          <div class='container'>

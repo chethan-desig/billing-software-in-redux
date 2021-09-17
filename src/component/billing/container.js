@@ -5,7 +5,7 @@ import Billform from './billform'
 import { asyncsendbills } from "../../action/billingaction"
 import Billui from './billui'
 import { asyncbilldelete } from "../../action/billingaction"
-
+import Navbar from '../navbar/navbarcomponent'
 
 const Container =()=>{
     const  dispatch = useDispatch()
@@ -27,6 +27,7 @@ const Container =()=>{
     
     return(
         <div >
+            <Navbar />
             <div className='row'>
             <div className='col-6 mt-4 ' >
             <Billui data={data} removebill={removebill} />

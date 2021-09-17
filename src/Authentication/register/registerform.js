@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import './cus.css'
+import Navbar from '../../component/navbar/navbarauth'
 const Registerform =(props)=>{
     const {registerdata} = props
     const [name,setName] = useState('')
@@ -83,6 +84,7 @@ const Registerform =(props)=>{
 
     return(
         <div>
+            <Navbar />
              <div className="row">
         <div className="col-md-6 offset-sm-3 text-left">
           <form onSubmit={handleSubmit}>

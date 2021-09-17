@@ -3,7 +3,7 @@ import { useDispatch,useSelector} from 'react-redux'
 import { startcustomer } from '../../action/componentsaction'
 import Customerlist from './customerslist'
 import { startingaddingcustomer } from '../../action/componentsaction'
-
+import Navbar from '../navbar/navbarcomponent'
 
 import Customerform from './customerform'
 
@@ -28,6 +28,7 @@ const Container =()=>{
     
     return(
         <div >
+            <Navbar/>
           <div className='row'>
               <div className='col-8 mt-4 ' >
 

@@ -49,10 +49,10 @@ const Pdf=(props)=>{
             <h4>id-{detalis._id}</h4>
            <h4> date-{moment(detalis.date).add().toString()}</h4>
            <h4> customer-{customername&&customername.map((ele)=>{return ele.name})}</h4>
-           <h4> product:<ul>{productname&&productname.map((ele)=>{return<li>{ele.name}</li>})}</ul></h4>
-           <h4>price:<ul>{detalis.lineItems.map((ele)=>{return <li>{ele.price}</li>})}</ul></h4>
-           <h4>quantity:<ul>{detalis.lineItems.map((ele)=>{return <li>{ele.quantity}</li>})}</ul></h4>
-           <h4>subTotal:<ul>{detalis.lineItems.map((ele)=>{return <li>{ele.subTotal}</li>})}</ul></h4>
+           <h4> product:<table >{productname&&productname.map((ele)=>{return<tr><td>{ele.name}</td></tr>})}</table></h4>
+           <h4>price:<table>{detalis.lineItems.map((ele)=>{return <tr><td>{ele.price}</td></tr>})}</table></h4>
+           <h4>quantity:<table>{detalis.lineItems.map((ele)=>{return <tr><td>{ele.quantity}</td></tr>})}</table></h4>
+           <h4>subTotal:<table>{detalis.lineItems.map((ele)=>{return <tr><td>{ele.subTotal}</td></tr>})}</table></h4>
            <h4> user-{detalis.user}</h4>
            <h4> createdAt-{detalis.createdAt}</h4>
            <h4> updateAt-{detalis.updatedAt}</h4>

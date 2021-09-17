@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch,useSelector } from "react-redux"
 import { startdetails } from "../action/authentication"
+import Navbar from '../component/navbar/navbarcomponent'
 import moment from 'moment'
 const Userdetails=()=>{
 
@@ -14,6 +15,8 @@ const Userdetails=()=>{
     
     
     return (
+        <div>
+            <Navbar/>
         <div className='container'>
             <h1>user- information</h1>
         <div className='container'>
@@ -31,6 +34,7 @@ const Userdetails=()=>{
 </div>
 </div>
     </div>
+        </div>
         </div>
         </div>
     )

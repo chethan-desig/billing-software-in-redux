@@ -27,7 +27,7 @@ export const registerauth=(reg)=>{
         payload:reg
     }
 }
-export const startloginauth=(formdata,handlechange,reset)=>{
+export const startloginauth=(formdata,reset)=>{
     return (dispatch)=>{
         axios.post('http://dct-billing-app.herokuapp.com/api/users/login',formdata)
         .then((res)=>{
@@ -39,7 +39,7 @@ export const startloginauth=(formdata,handlechange,reset)=>{
                 
                 dispatch(loginauth(result))
                 reset()
-                handlechange()
+            
                 
             }
         })

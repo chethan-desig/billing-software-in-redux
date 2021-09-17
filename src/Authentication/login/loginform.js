@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { withRouter } from 'react-router'
 import {Link} from 'react-router-dom'
 import './cus.css'
+import Navbar from '../../component/navbar/navbarauth'
 const Loginform =(props)=>{
     const {logindata} = props
    const [email,setEmail] = useState('')
@@ -59,6 +60,7 @@ const Loginform =(props)=>{
 
     return(
         <div>
+            <Navbar />
             <div className="row">
         <div className="col-md-6 offset-sm-3 text-left">
           <form onSubmit={handleSubmit}>

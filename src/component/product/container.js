@@ -5,6 +5,7 @@ import { startsendingproduct } from "../../action/productsaction"
 import {asyncdelete} from '../../action/productsaction'
 import Productform from "./productform"
 import Productlisting from './productlisting'
+import Navbar from '../navbar/navbarcomponent'
 const Container =()=>{
     const dispatch = useDispatch()
     useEffect(()=>{
@@ -21,6 +22,7 @@ const Container =()=>{
     }
     return(
         <div>
+            <Navbar />
             <div className='row'>
             <div className='col-5 mt-4 ' >
             <Productlisting data={data} deletingdata={deletingdata}/>

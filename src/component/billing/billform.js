@@ -17,7 +17,7 @@ const Loginform =(props)=>{
     const [productselect,setProductselected] = useState('')
     const [modaldata,setModaldata] = useState([])
     const [custername,setCustomername] = useState([])
-    const [minus,setMinus] = useState([1])
+    const [minus,setMinus] = useState(0)
     const [productid,setProductid] = useState([])
     
     const [validation,setValidation] = useState({})
@@ -61,8 +61,10 @@ const Loginform =(props)=>{
     const handleminus=(id)=>{
         const pro = product.map((ele)=>{
             if(ele.product==id){ 
+                setMinus(minus-1)
                 return {...ele,...{quantity:ele.quantity-1}}
             }else{
+                setMinus(minus)
                 return {...ele}
             }
         })
@@ -184,11 +186,11 @@ const Loginform =(props)=>{
        
 
     }
-      console.log(product)
+    
     return(
        
         <div className='row'>
-            <div className='col-8'>
+            <div className='col-4'>
                 <form onSubmit={handleSubmit}>
             <label class="form-label">Date</label>
                 <input type='date' value={date}  class="form-control"  onChange={handleChange} name='date' placeholder='date'/>
@@ -252,7 +254,7 @@ const Loginform =(props)=>{
          <button onClick={handleCancle}>cancel</button>
             </Modal>
           
-            <div className='col-4'>
+            <div className='col-8'>
             {
                         //   <table border='1px'>
                         //        <tbody>
@@ -300,7 +302,7 @@ const Loginform =(props)=>{
                     }
 
                     {
-                        product.length==0?'': <table >
+                        product.length==0?'add product ': <table >
                         <thead>
                             <td><tr>minus</tr></td>
                             <td><tr>name</tr></td> 
@@ -312,8 +314,9 @@ const Loginform =(props)=>{
                             {
                                  
                                 <td className='td'>     {
-                                         productname.map((ele)=>{return <tr className='tr'><button 
-                                          className='button' onClick={()=>{handleminus(ele._id)}}>-</button></tr>})
+                                        minus>=1? productname.map((ele)=>{return <tr className='tr'><button 
+                                          className='button' onClick={()=>{handleminus(ele._id)}}>-</button></tr>}): productname.map((ele)=>{return <tr className='tr'><button 
+                                          className='button'>-</button></tr>})
                                      }
                                     
                                     </td>
@@ -321,8 +324,9 @@ const Loginform =(props)=>{
                            
                              {
                                  
-                                 <td className='td'>     {
-                                          productname.map((ele)=>{return <tr className='tr'>
+                                 <td className='td'> 
+                                     {
+                                        productname.map((ele)=>{return <tr className='tr'>
                                               <button className='button'>{ele.name}</button>
                                           </tr>})
                                       }

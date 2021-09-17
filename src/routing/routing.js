@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { Route,Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import PrivateRoute from '../helper/privateRoute'
 import Home from '../component/home'
 import Customers from '../component/customer/container'
 import Product from '../component/product/container'
@@ -10,23 +11,13 @@ import Registerauth from "../Authentication/register/registerauth";
 import Loginauth from "../Authentication/login/loginauth";
 import userdetails from "../Authentication/userdetails";
 import Dashboard from '../component/dashboard'
-
+import Navbar from '../component/navbar/navbarauth'
 const Routing=(props)=>{
-   const {history} = props
+   
       
-    const [handle,setHandle] = useState(false)
-    const handlechange=()=>{
-        setHandle(!handle) 
 
-    }
-    const cureentpath=(history,path)=>{
-        if(history.location.pathname==path){
-            return {color:'#50DBB4'}
-        }else {
-            return {color:'#EDC126'}
-        }
-    }
     return(
+
         <div>
           
             <nav class="navbar navbar-light bg-light">
@@ -38,70 +29,20 @@ const Routing=(props)=>{
             </div>
             </nav>
             <div>
-            {
-                handle?<div>
-                        <ul class="nav justify-content-end bg-light">
-                        <li class="nav-item">
-                                <Link style={cureentpath(history,'/dashboard')}to='/dashboard' class="nav-link "  >dashboard</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link style={cureentpath(history,'/customers')}to='/customers' class="nav-link "  >customers</Link>
-                            </li>
-                            <li class="nav-item">
-                                 <Link style={cureentpath(history,'/products')} to='/products' class="nav-link "  >products</Link> 
-                             </li>
-                           
-                            <li class="nav-item">
-                                  <Link style={cureentpath(history,'/billings')}  to='/billings'class="nav-link" >billings</Link>
-                             </li>
-                             <li class="nav-item">
-                                    <Link style={cureentpath(history,'')}  to='' class="nav-link" onClick={()=>{
-                                                        localStorage.removeItem('jwt')
-                                                        handlechange()
-                                                        }}>Logout</Link>
-                             </li>
-                            <li class="nav-item">
-                                    <Link to='/userdetails' class="nav-link mr-auto" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                                                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                                                </svg></Link>
-                            </li>
-
-                         </ul>
-                      
-                    </div>:<div>
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div className='container-fluid'>
-                        <a class="navbar-brand" href="#">Billing software</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                        <Link style={cureentpath(history,'/home')}  to='/'class="nav-link active" >home</Link>
-                        <Link style={cureentpath(history,'/register')} to='/register'class="nav-link" >register</Link>
-                        <Link style={cureentpath(history,'/login')}  to='/login' class="nav-link" >login</Link>
-
-                        </div>
-                        </div>
-                    </div>
-                    </nav>
-                    </div>
-
-                   
-            }
+           
+               
+                 
+          <div>
+                <PrivateRoute  path='/dashboard' component={Dashboard} />
+               <PrivateRoute path='/customers' component={Customers} /> <PrivateRoute  path='/products' component={Product} />
+                 <PrivateRoute  path='/billings' component={Billing} />
+                <PrivateRoute path="/userdetails" component={userdetails}/>
+                </div>
+          <div><PrivateRoute  path='/register' component={Registerauth}/>
+          <Route  path='/login' component={Loginauth}/> 
+          </div>
       
-      {
-          handle?<div>
-                <Route exact path='/dashboard' component={Dashboard} ></Route> 
-               <Route exact path='/customers' component={Customers} ></Route> <Route exact path='/products' component={Product} >
-                </Route> <Route exact path='/billings' component={Billing} >
-                </Route><Route path="/userdetails" component={userdetails}>
-                </Route></div>
-          :<div><Route exact path='/register' component={Registerauth} ></Route>  <Route exact path='/login' render={(props)=>{
-            return <Loginauth {...props} handlechange={handlechange}/>
-        }}></Route></div>
-      }
-            <Route exact path='/' component={Home} ></Route>
+            <PrivateRoute exact path='/' component={Home} />
       </div>
         </div>
     )

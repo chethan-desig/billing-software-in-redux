@@ -5,7 +5,7 @@ const Loginauth=(props)=>{
     const {handlechange} = props
     const dispatch = useDispatch()
     const logindata=(formdata,reset)=>{
-        dispatch(startloginauth(formdata,handlechange,reset))
+        dispatch(startloginauth(formdata,reset))
     }
     return (
         <div>
