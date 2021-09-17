@@ -12,22 +12,26 @@ const Navbarauth=(props)=>{
         }
     }
     return(
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div className='container-fluid'>
+        <ul class="nav nav-tabs bg-light">
+       
             <h3 class="navbar-brand">Billing software</h3>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-            <Link style={cureentpath(history,'/home')}  to='/'class="nav-link active" >home</Link>
-            <Link style={cureentpath(history,'/register')} to='/register'class="nav-link" >register</Link>
-            <Link style={cureentpath(history,'/login')}  to='/login' class="nav-link" >login</Link>
-
-            </div>
-            </div>
-        </div>
-        </nav>
+         
+            <li className="nav-item">
+        <Link style={cureentpath(history,'/home')} className="nav-link" to="/">
+          Home
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link style={cureentpath(history,'/register')} className="nav-link" to="/register">
+          register
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link style={cureentpath(history,'/login')} className="nav-link" to="/login">
+          login
+        </Link>
+      </li>
+        </ul>
        
     )
 }

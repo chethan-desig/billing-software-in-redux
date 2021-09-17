@@ -12,7 +12,7 @@ This is app for the Retail shop owners who wants to keep track of his customers,
 
 
 # Project DEMO
- - Here you can see Live DEMO of the Application [DEMO](https://blissful-varahamihira-861324.netlify.app)
+ - Here you can see Live DEMO of the Application [DEMO](https://software-billing-application.netlify.app/)
 # DEMO IMAGES
 - Pending Image and GIFS
 # FEATURES
