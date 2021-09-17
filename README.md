@@ -68,4 +68,4 @@ This is app for the Retail shop owners who wants to keep track of his customers,
   - All the details of customer,products,bills.
 
 # Contributors
-  ### [Dipesh Rajput](https://github.com/Dipesh777)
+  ### [Chethan L](https://github.com/chethan-desig)
