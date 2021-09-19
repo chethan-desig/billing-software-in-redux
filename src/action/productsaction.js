@@ -61,7 +61,7 @@ export const asyncdelete=(id)=>{
         })
         .then((res)=>{
             const result = res.data
-            
+            alert('Are you sure')
             dispatch(deleting(result))
         })
     }

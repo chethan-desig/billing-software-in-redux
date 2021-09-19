@@ -79,31 +79,37 @@ const Dashboard=()=>{
        <div>
 
         <Navbar />
-        <div className='container mt-4'>
-                    <div class="card">
-            <div class="card-body">
-               <h2>Total connected customers</h2>
-                <h4>{customer.length}</h4>
-            </div>
+        <div className='d-flex m-4 justify-content-around'>
+        <div className="card text-success bg-light mb-3" style={{ maxWidth: "200px" }}>
+                        <div className="card-header">Customers</div>
+                        <div className="card-body">
+                            <h5 className="card-title">Total Connected Customers</h5>
+                            <p className="card-text text-center fs-1">{customer.length}</p>
+                        </div>
+           </div>  
+           <div className="card text-success bg-light mb-3" style={{ maxWidth: "200px" }}>
+                        <div className="card-header">Customers</div>
+                        <div className="card-body">
+                            <h5 className="card-title">Total Product Available</h5>
+                            <p className="card-text text-center fs-1">{product.length}</p>
+                        </div>
+           </div>      
+           <div className="card text-success bg-light mb-3" style={{ maxWidth: "200px" }}>
+                        <div className="card-header">Customers</div>
+                        <div className="card-body">
+                            <h5 className="card-title">Total bills Generated</h5>
+                            <p className="card-text text-center fs-1">{bill.length}</p>
+                        </div>
+           </div>       
+           <div className="card text-success bg-light mb-3" style={{ maxWidth: "200px" }}>
+                        <div className="card-header">Customers</div>
+                        <div className="card-body">
+                            <h5 className="card-title">Total Revenue Generated</h5>
+                            <p className="card-text text-center fs-1">{totalRevenue}</p>
+                        </div>
+           </div>              
         </div>
-        <div class="card mt-4">
-            <div class="card-body">
-               <h2>Total Products Available</h2>
-                <h4>{product.length}</h4>
-            </div>
-        </div>
-        <div class="card mt-4">
-            <div class="card-body">
-               <h2>total Bill generated </h2>
-                <h4>{bill.length}</h4>
-            </div>
-        </div>
-        <div class="card mt-4">
-            <div class="card-body">
-               <h2>Total revenue generated</h2>
-                <h4>{totalRevenue}</h4>
-            </div>
-        </div>
+      <div>
         <div className='row mt-5'>
             <div className='col-6'>
              <BarChart width={730} height={250} data={data}>

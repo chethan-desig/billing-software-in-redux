@@ -59,6 +59,7 @@ export const asyncbilldelete=(id)=>{
         })
         .then((res)=>{
             const result = res.data
+            alert('Are you sure')
             dispatch(billdelete(result))
         })
         .catch((err)=>{

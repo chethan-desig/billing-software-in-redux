@@ -1,6 +1,9 @@
 import React,{useState,useEffect} from "react"
 import { useSelector } from "react-redux"
 import moment from "moment"
+import Productname from "./productname"
+import { Details } from "@material-ui/icons"
+import './cus.css'
 const Pdf=(props)=>{
     const {detalis} = props
     const [customername,setCustomername] = useState([])
@@ -49,13 +52,49 @@ const Pdf=(props)=>{
             <h4>id-{detalis._id}</h4>
            <h4> date-{moment(detalis.date).add().toString()}</h4>
            <h4> customer-{customername&&customername.map((ele)=>{return ele.name})}</h4>
-           <h4> product:<table >{productname&&productname.map((ele)=>{return<tr><td>{ele.name}</td></tr>})}</table></h4>
+           {/* <h4> product:<table >{productname&&productname.map((ele)=>{return<tr><td>{ele.name}</td></tr>})}</table></h4>
            <h4>price:<table>{detalis.lineItems.map((ele)=>{return <tr><td>{ele.price}</td></tr>})}</table></h4>
            <h4>quantity:<table>{detalis.lineItems.map((ele)=>{return <tr><td>{ele.quantity}</td></tr>})}</table></h4>
-           <h4>subTotal:<table>{detalis.lineItems.map((ele)=>{return <tr><td>{ele.subTotal}</td></tr>})}</table></h4>
-           <h4> user-{detalis.user}</h4>
-           <h4> createdAt-{detalis.createdAt}</h4>
-           <h4> updateAt-{detalis.updatedAt}</h4>
+           <h4>subTotal:<table>{detalis.lineItems.map((ele)=>{return <tr><td>{ele.subTotal}</td></tr>})}</table></h4> */}
+          <table >
+              <tr>
+                 <th>product</th>
+                 <th>quantity</th>
+                 <th>price</th>
+                 <th>subtotal</th>
+              </tr>
+              <tbody>
+                  <tr>
+                    {
+                        productname.map((ele)=>{
+                    return <tr><td>{ele.name}</td></tr>
+                        })
+                    }
+                    <td>
+                    {
+                      detalis.lineItems.map((ele)=>{
+                           return <tr><td>{ele.quantity}</td></tr>
+                       })
+                    }
+                    </td>
+                    <td>
+                    {
+                      detalis.lineItems.map((ele)=>{
+                           return <tr><td>{ele.price}</td></tr>
+                       })
+                    }
+                    </td>
+                    <td>
+                    {
+                      detalis.lineItems.map((ele)=>{
+                           return <tr><td>{ele.subTotal}</td></tr>
+                       })
+                    }
+                    </td>
+                
+                   </tr>  
+              </tbody>
+          </table>
            <h4> total-{detalis.total}</h4>
 
            

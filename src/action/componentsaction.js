@@ -60,6 +60,7 @@ export const startdeletecustomer=(id)=>{
         })
         .then((res)=>{
             const result = res.data
+            alert('Are you sure')
             dispatch(deleting(result))
         })
         .catch((err)=>{
